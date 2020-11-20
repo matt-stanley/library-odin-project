@@ -17,16 +17,20 @@ function Book(title, author, year, pages, read) {
 function addBookToLibrary(title, author, year, pages, read) {
   newBook = new Book(title, author, year, pages, read)
   myLibrary.push(newBook)
-  displayLibrary()
+  newBookCard = createBookCard(newBook)
+  libraryContainer.prepend(newBookCard)
+  setTimeout(() => newBookCard.classList.add('visible'), 100)
+  
 }
 
 function displayLibrary() {
   libraryContainer.textContent = ''
-  bookCards = []
+  let bookCards = []
   myLibrary.forEach(book => bookCards.unshift(createBookCard(book)))
 
   bookCards.forEach(card => {
     libraryContainer.appendChild(card)
+    card.classList.add('visible')
   })
 }
 
@@ -36,15 +40,17 @@ function createBookCard(book) {
   card.classList.add('book-card')
 
   const titleBox = document.createElement('div')
+  titleBox.classList.add('title-box')
   const titleHeading = `<h3>${book.title}</h3>`
   titleBox.innerHTML = titleHeading
 
   const infoBox = document.createElement('div')
+  infoBox.classList.add('info-box')
   const info = `
-    <span><span class="info-tag">Author: </span> ${book.author}</span>
-    <span><span class="info-tag">Year  : </span> ${book.year}</span>
-    <span><span class="info-tag">Pages : </span> ${book.pages}</span>
-    <span><span class="info-tag">Read? : </span> ${book.read}</span>
+    <span class='info-line'><span class="info-tag"><pre>Author: </pre></span> ${book.author}</span>
+    <span class='info-line'><span class="info-tag"><pre>Year  : </pre></span> ${book.year}</span>
+    <span class='info-line'><span class="info-tag"><pre>Pages : </pre></span> ${book.pages}</span>
+    <span class='info-line'><span class="info-tag"><pre>Read? : </pre></span> ${book.read}</span>
   `;
   infoBox.innerHTML = info
   
