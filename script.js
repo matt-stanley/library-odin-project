@@ -1,4 +1,6 @@
 const libraryContainer = document.querySelector('#library-container');
+const addBookForm = document.querySelector("#add-book-form")
+const grayOverlay = document.querySelector("#gray-overlay")
 
 let myLibrary = []
 
@@ -58,4 +60,18 @@ function createBookCard(book) {
   card.appendChild(infoBox)
 
   return card
+}
+
+function showForm() {
+  addBookForm.style.display = 'block'
+  addBookForm.style.opacity = '1'
+  grayOverlay.style.display = 'block'
+  grayOverlay.style.opacity = '1'
+}
+
+function hideForm() {
+  addBookForm.style.display = 'none'
+  addBookForm.style.opacity = '0'
+  grayOverlay.style.display = 'none'
+  grayOverlay.style.opacity = '0'
 }

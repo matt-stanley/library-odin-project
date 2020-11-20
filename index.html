@@ -7,6 +7,7 @@
   </head>
 
   <body>
+    <div id="gray-overlay"></div>
     <header>
       <h1>My Library</h1>
     </header>
@@ -18,6 +19,15 @@
           <button id="delete-all-btn"></button>
         </span>
       <form id="add-book-form">
+        <h2>Add a new Book</h2>
+        <label for="title">Title</label>
+        <input id="title" name="title" type="text">
+
+        <label for="author">Author</label>
+        <input id="author" name="author" type="text">
+
+        <label for="year">Year Published</label>
+        <input id="year" name="year" type="number" min="1200" max="3000">
 
       </form>
     </div>
