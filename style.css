@@ -6,6 +6,14 @@ body {
   background: #839b97;
 }
 
+header {
+  line-height: 80px;
+  text-align: center;
+
+  font-family: 'Goudy Bookletter 1911', serif;
+  font-size: 2rem;
+}
+
 #library-container {
   display: flex;
   justify-content: center;
@@ -72,4 +80,47 @@ body {
 .info-tag {
   font-size: 1.4rem;
   font-weight: bolder;
+}
+
+#menu {
+  position: fixed;
+  left: 30px;
+  top: 30px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-btn {
+  margin-bottom: 15px;
+}
+
+#add-book-btn {
+  background-image: url("./icons/book_add_white.png");
+  background-color: #34626c;
+  background-size: cover;
+  height: 50px;
+  width: 50px;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+  padding: 0;
+
+  cursor: pointer;
+}
+
+#delete-all-btn {
+  background-image: url("./icons/remove_white.png");
+  background-color: #a20a0a;
+  background-size: cover;
+  height: 50px;
+  width: 50px;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+  padding: 0;
+
+  cursor: pointer;
 }
