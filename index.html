@@ -18,22 +18,29 @@
         <span class="menu-btn" title="Delete All Books">
           <button id="delete-all-btn"></button>
         </span>
+    </div>
+    <div id="form-div">
+      <span class="menu-btn" title="Close">
+        <button id="close-form-btn" onclick="hideForm()"></button>
+      </span>
       <form id="add-book-form">
+        
         <h2>Add a new Book</h2>
         <label for="title">Title</label>
-        <input id="title" name="title" type="text">
+        <input id="title" name="title" type="text" required>
 
         <label for="author">Author's Name</label>
-        <input id="author" name="author" type="text">
+        <input id="author" name="author" type="text" required>
 
         <label for="year">Year Published</label>
-        <input id="year" name="year" type="number" min="1200" max="3000">
+        <input id="year" name="year" type="number" min="1200" max="3000" required>
 
         <label for="pages">Number of Pages</label>
-        <input id="pages" name="pages" type="number">
+        <input id="pages" name="pages" type="number" required>
 
         <label for="read"><input type="checkbox" id="read" name="read" class="checkbox">I have read this book.</label>
 
+        <input type="submit" id="submit-btn" value="Add Book">
       </form>
     </div>
     <div id="library-container"></div>

@@ -139,11 +139,7 @@ header {
   transition: opacity 0.8s;
 }
 
-#add-book-form {
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-
+#form-div {
   position: fixed;
   top: 150px;
   width: 700px;
@@ -151,16 +147,18 @@ header {
   right: 0;
   margin: 0 auto;
 
+  opacity: 0;
+  z-index: 3;
+
+  transition: opacity 0.8s;
+}
+
+#add-book-form {
   background: #cfd3ce;
   padding: 40px;
   border-radius: 10px;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
   font-family: 'Raleway', sans-serif;
-
-  opacity: 0;
-  z-index: 3;
-
-  transition: opacity 0.8s;
 }
 
 #add-book-form h2 {
@@ -175,6 +173,35 @@ header {
 }
 
 .checkbox {
-  
   margin: 0 15px 0 0;
+}
+
+#submit-btn {
+  padding: 10px 15px;
+  background-color: #34626c;
+  color: white;
+  font-size: 1.2rem;
+}
+
+#close-form-btn {
+  background-image: url("./icons/close-white.png");
+  background-color: #34626c;
+  background-size: cover;
+  height: 50px;
+  width: 50px;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+  padding: 0;
+
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  cursor: pointer;
+}
+
+.visible {
+  opacity: 1;
 }

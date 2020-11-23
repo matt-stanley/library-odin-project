@@ -1,4 +1,5 @@
-const libraryContainer = document.querySelector('#library-container');
+const libraryContainer = document.querySelector('#library-container')
+const formDiv = document.querySelector('#form-div')
 const addBookForm = document.querySelector("#add-book-form")
 const grayOverlay = document.querySelector("#gray-overlay")
 
@@ -9,7 +10,7 @@ function Book(title, author, year, pages, read) {
   this.author = author
   this.year = year
   this.pages = pages
-  this.read = read
+  this.read = read ? 'Yes' : 'Not Yet'
 
   this.toggleRead = function() {
     this.read = !this.read
@@ -63,15 +64,36 @@ function createBookCard(book) {
 }
 
 function showForm() {
-  addBookForm.style.display = 'block'
-  addBookForm.style.opacity = '1'
+  formDiv.style.display = 'block'
+  formDiv.style.opacity = '1'
   grayOverlay.style.display = 'block'
   grayOverlay.style.opacity = '1'
 }
 
 function hideForm() {
-  addBookForm.style.display = 'none'
-  addBookForm.style.opacity = '0'
+  formDiv.style.display = 'none'
+  formDiv.style.opacity = '0'
   grayOverlay.style.display = 'none'
   grayOverlay.style.opacity = '0'
+}
+
+// Form handling
+
+addBookForm.addEventListener('submit', event => {
+  event.preventDefault()
+  bookFormSubmit()
+})
+
+function bookFormSubmit() {
+  let title = addBookForm.title.value
+  let author = addBookForm.author.value
+  let year = addBookForm.year.value
+  let pages = addBookForm.pages.value
+  let read = addBookForm.read.checked
+
+
+  addBookForm.reset()
+  hideForm()
+
+  addBookToLibrary(title, author, year, pages, read)
 }
