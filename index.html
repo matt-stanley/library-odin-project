@@ -13,7 +13,7 @@
     </header>
     <div id="menu">
         <span class="menu-btn" title="Add a Book">
-          <button id="add-book-btn"></button>
+          <button id="add-book-btn" onclick="showForm()"></button>
         </span>
         <span class="menu-btn" title="Delete All Books">
           <button id="delete-all-btn"></button>
@@ -23,11 +23,16 @@
         <label for="title">Title</label>
         <input id="title" name="title" type="text">
 
-        <label for="author">Author</label>
+        <label for="author">Author's Name</label>
         <input id="author" name="author" type="text">
 
         <label for="year">Year Published</label>
         <input id="year" name="year" type="number" min="1200" max="3000">
+
+        <label for="pages">Number of Pages</label>
+        <input id="pages" name="pages" type="number">
+
+        <label for="read"><input type="checkbox" id="read" name="read" class="checkbox">I have read this book.</label>
 
       </form>
     </div>

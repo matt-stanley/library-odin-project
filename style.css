@@ -132,7 +132,7 @@ header {
   height: 100vh;
   width: 100vw;
 
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.7);
   opacity: 0;
  
 
@@ -140,14 +140,41 @@ header {
 }
 
 #add-book-form {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
   position: fixed;
-  top: 50px;
+  top: 150px;
   width: 700px;
   left: 0;
   right: 0;
-  margin: auto;
+  margin: 0 auto;
+
+  background: #cfd3ce;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+  font-family: 'Raleway', sans-serif;
+
   opacity: 0;
   z-index: 3;
 
   transition: opacity 0.8s;
+}
+
+#add-book-form h2 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+#add-book-form label {
+  display: block;
+  padding: 15px 0;
+  font-size: 1.5rem;
+}
+
+.checkbox {
+  
+  margin: 0 15px 0 0;
 }
