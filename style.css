@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=Raleway&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=Raleway&display=swap");
 
 body {
   width: 100vw;
@@ -10,7 +10,7 @@ header {
   line-height: 80px;
   text-align: center;
 
-  font-family: 'Goudy Bookletter 1911', serif;
+  font-family: "Goudy Bookletter 1911", serif;
   font-size: 2rem;
 }
 
@@ -26,21 +26,17 @@ header {
   margin: 20px;
   background: #cfd3ce;
   border-radius: 10px;
-  box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
 
   opacity: 0;
   transition: opacity 0.8s linear;
-  
 }
-
-
 
 .title-box {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 140px;
-
 
   border-bottom: 2px solid black;
 }
@@ -62,7 +58,7 @@ header {
   width: 60%;
   margin: 20px auto;
 
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1.2rem;
 }
 
@@ -102,7 +98,7 @@ header {
   border: none;
   outline: none;
   border-radius: 7px;
-  box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
   padding: 0;
 
   cursor: pointer;
@@ -117,8 +113,44 @@ header {
   border: none;
   outline: none;
   border-radius: 7px;
-  box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
   padding: 0;
+
+  cursor: pointer;
+}
+
+.card-btn-container {
+  display: flex;
+  align-items: center;
+}
+
+.read-toggle-btn {
+  height: 50px;
+  min-width: 70px;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+  margin: 15px;
+  padding: 10px;
+
+  font-size: 1rem;
+
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-image: url("./icons/trash_black.png");
+  background-color: #a20a0a;
+  background-size: cover;
+  height: 50px;
+  width: 50px;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+  padding: 0;
+  margin: 15px;
 
   cursor: pointer;
 }
@@ -132,9 +164,8 @@ header {
   height: 100vh;
   width: 100vw;
 
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   opacity: 0;
- 
 
   transition: opacity 0.8s;
 }
@@ -158,7 +189,7 @@ header {
   padding: 40px;
   border-radius: 10px;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 #add-book-form h2 {
@@ -192,7 +223,7 @@ header {
   border: none;
   outline: none;
   border-radius: 7px;
-  box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
   padding: 0;
 
   position: absolute;

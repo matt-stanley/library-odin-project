@@ -10,7 +10,7 @@ function Book(title, author, year, pages, read, id) {
   this.author = author
   this.year = year
   this.pages = pages
-  this.read = read ? 'Yes' : 'Not Yet'
+  this.read = read
   this.id = id
 
   this.toggleRead = function() {
@@ -62,7 +62,7 @@ function createBookCard(book) {
     <span class='info-line'><span class="info-tag"><pre>Author: </pre></span> ${book.author}</span>
     <span class='info-line'><span class="info-tag"><pre>Year  : </pre></span> ${book.year}</span>
     <span class='info-line'><span class="info-tag"><pre>Pages : </pre></span> ${book.pages}</span>
-    <span class='info-line'><span class="info-tag"><pre>Read? : </pre></span> ${book.read}</span>
+    <span class='info-line'><span class="info-tag"><pre>Read? : </pre></span><span class='read-status'> ${book.read ? 'Yes' : 'Not Yet'}</span></span>
   `;
   infoBox.innerHTML = info
 
@@ -71,6 +71,7 @@ function createBookCard(book) {
 
   let toggleReadButton = document.createElement('button')
   toggleReadButton.classList.add('read-toggle-btn')
+  toggleReadButton.textContent = `Toggle 'Read'`
   toggleReadButton.addEventListener('click', event => {toggleRead(event)})
 
   let deleteButton = document.createElement('button')
@@ -138,5 +139,19 @@ function removeBook(event) {
   
   libraryContainer.removeChild(parentCard)
 
-  myLibrary = myLibrary.filter(book => {book.id != id})
+  myLibrary.splice(myLibrary.findIndex(book => book.id === id),1)
+}
+
+function toggleRead(event) {
+  let parentCard = findParentCard(event.target)
+  let id = parentCard.dataset.id
+
+  let book = myLibrary.find(book => book.id === id)
+  book.toggleRead()
+  console.log(book.read)
+
+  let readSpan = parentCard.querySelector('.read-status')
+  let readStatus = book.read ? 'Yes' : 'Not Yet'
+  
+  readSpan.textContent = readStatus
 }
