@@ -5,25 +5,33 @@ const grayOverlay = document.querySelector("#gray-overlay")
 
 let myLibrary = []
 
-function Book(title, author, year, pages, read) {
+function Book(title, author, year, pages, read, id) {
   this.title = title
   this.author = author
   this.year = year
   this.pages = pages
   this.read = read ? 'Yes' : 'Not Yet'
+  this.id = id
 
   this.toggleRead = function() {
     this.read = !this.read
   }
+
+  this.setId = function(id) {
+    this.id = id
+  }
 }
 
 function addBookToLibrary(title, author, year, pages, read) {
-  newBook = new Book(title, author, year, pages, read)
+  let id = generateRandomId()
+  let newBook = new Book(title, author, year, pages, read, id)
+
   myLibrary.push(newBook)
-  newBookCard = createBookCard(newBook)
+
+  let newBookCard = createBookCard(newBook)
   libraryContainer.prepend(newBookCard)
-  setTimeout(() => newBookCard.classList.add('visible'), 100)
-  
+
+  setTimeout(() => newBookCard.classList.add('visible'), 80)
 }
 
 function displayLibrary() {
@@ -39,29 +47,52 @@ function displayLibrary() {
 
 // Creates card to be added to DOM, with book info
 function createBookCard(book) {
-  const card = document.createElement('div')
+  let card = document.createElement('div')
   card.classList.add('book-card')
+  card.setAttribute('data-id', book.id)
 
-  const titleBox = document.createElement('div')
+  let titleBox = document.createElement('div')
   titleBox.classList.add('title-box')
-  const titleHeading = `<h3>${book.title}</h3>`
+  let titleHeading = `<h3>${book.title}</h3>`
   titleBox.innerHTML = titleHeading
 
-  const infoBox = document.createElement('div')
+  let infoBox = document.createElement('div')
   infoBox.classList.add('info-box')
-  const info = `
+  let info = `
     <span class='info-line'><span class="info-tag"><pre>Author: </pre></span> ${book.author}</span>
     <span class='info-line'><span class="info-tag"><pre>Year  : </pre></span> ${book.year}</span>
     <span class='info-line'><span class="info-tag"><pre>Pages : </pre></span> ${book.pages}</span>
     <span class='info-line'><span class="info-tag"><pre>Read? : </pre></span> ${book.read}</span>
   `;
   infoBox.innerHTML = info
+
+  let buttonContainer = document.createElement('div')
+  buttonContainer.classList.add('card-btn-container')
+
+  let toggleReadButton = document.createElement('button')
+  toggleReadButton.classList.add('read-toggle-btn')
+  toggleReadButton.addEventListener('click', event => {toggleRead(event)})
+
+  let deleteButton = document.createElement('button')
+  deleteButton.classList.add('delete-btn')
+  deleteButton.addEventListener('click', event => {removeBook(event)})
+
+  buttonContainer.appendChild(toggleReadButton)
+  buttonContainer.appendChild(deleteButton)
   
   card.appendChild(titleBox)
   card.appendChild(infoBox)
+  card.appendChild(buttonContainer)
 
   return card
 }
+
+// Generate random ID for book / DOM card
+function generateRandomId() {
+  return '_' + Math.random().toString(36).substr(2, 9);
+}
+
+// Form handling
 
 function showForm() {
   formDiv.style.display = 'block'
@@ -71,13 +102,12 @@ function showForm() {
 }
 
 function hideForm() {
+  addBookForm.reset()
   formDiv.style.display = 'none'
   formDiv.style.opacity = '0'
   grayOverlay.style.display = 'none'
   grayOverlay.style.opacity = '0'
 }
-
-// Form handling
 
 addBookForm.addEventListener('submit', event => {
   event.preventDefault()
@@ -91,9 +121,22 @@ function bookFormSubmit() {
   let pages = addBookForm.pages.value
   let read = addBookForm.read.checked
 
-
-  addBookForm.reset()
   hideForm()
 
   addBookToLibrary(title, author, year, pages, read)
+}
+
+// Card button functions
+
+function findParentCard(node) {
+  return node.closest('.book-card')
+}
+
+function removeBook(event) {
+  let parentCard = findParentCard(event.target)
+  let id = parentCard.dataset.id
+  
+  libraryContainer.removeChild(parentCard)
+
+  myLibrary = myLibrary.filter(book => {book.id != id})
 }
