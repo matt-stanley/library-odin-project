@@ -34,6 +34,15 @@ function addBookToLibrary(title, author, year, pages, read) {
   setTimeout(() => newBookCard.classList.add('visible'), 80)
 }
 
+function deleteAllBooks() {
+  let confirmation = confirm('Are you sure you want to delete all books in your library?')
+
+  if(confirmation) {
+    libraryContainer.innerHTML = ''
+    myLibrary = []
+  }
+}
+
 function displayLibrary() {
   libraryContainer.textContent = ''
   let bookCards = []
